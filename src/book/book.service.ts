@@ -8,7 +8,9 @@ export class BookService {
     private books: Book[] = [];
 
     create(createBookDto: CreateBookDto) {
-        console.log(createBookDto)
+        if(process.env.NODE_ENV !== 'production'){
+            console.log(createBookDto)
+        }
         this.books.push({...createBookDto, id: this.books.length + 1});
 
         return createBookDto;
